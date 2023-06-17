@@ -193,28 +193,6 @@ namespace Inta.ERP.Authorization.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserLogins",
-                schema: "auth",
-                columns: table => new
-                {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserLogins", x => new { x.LoginProvider, x.ProviderKey });
-                    table.ForeignKey(
-                        name: "FK_UserLogins_Users_UserId",
-                        column: x => x.UserId,
-                        principalSchema: "auth",
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "UserRoles",
                 schema: "auth",
                 columns: table => new
@@ -239,28 +217,6 @@ namespace Inta.ERP.Authorization.Migrations
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_UserRoles_Users_UserId",
-                        column: x => x.UserId,
-                        principalSchema: "auth",
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserTokens",
-                schema: "auth",
-                columns: table => new
-                {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
-                    table.ForeignKey(
-                        name: "FK_UserTokens_Users_UserId",
                         column: x => x.UserId,
                         principalSchema: "auth",
                         principalTable: "Users",
@@ -308,13 +264,13 @@ namespace Inta.ERP.Authorization.Migrations
                 schema: "auth",
                 table: "OIDApplications",
                 columns: new[] { "Id", "ClientId", "ClientSecret", "ConcurrencyToken", "ConsentType", "DisplayName", "DisplayNames", "Permissions", "PostLogoutRedirectUris", "Properties", "RedirectUris", "Requirements", "Type" },
-                values: new object[] { "e8794dd5-baa8-4bc3-93a9-1108f3dd18ab", "Inta_ERP_Angular_Client", null, "59a21d60-cf9f-4ed6-afff-a0849c582d77", "explicit", "Inta ERP Angular Client PKCE", "{\"fr-FR\":\"Inta ERP Angular Client PKCE\"}", "[\"ept:authorization\",\"ept:logout\",\"ept:token\",\"ept:revocation\",\"gt:authorization_code\",\"gt:refresh_token\",\"rst:code\",\"scp:email\",\"scp:profile\",\"scp:roles\",\"scp:dataEventRecords\"]", "[\"https://localhost:4200\"]", null, "[\"https://localhost:4200\"]", "[\"ft:pkce\"]", "public" });
+                values: new object[] { "32ab7a7e-7a88-4030-9b33-6cabdc22b677", "Inta_ERP_Angular_Client", null, "b2239ef7-2aea-476e-ba82-73afef90e85e", "explicit", "Inta ERP Angular Client PKCE", "{\"fr-FR\":\"Inta ERP Angular Client PKCE\"}", "[\"ept:authorization\",\"ept:logout\",\"ept:token\",\"ept:revocation\",\"gt:authorization_code\",\"gt:refresh_token\",\"rst:code\",\"scp:email\",\"scp:profile\",\"scp:roles\",\"scp:dataEventRecords\"]", "[\"https://localhost:4200\"]", null, "[\"https://localhost:4200\"]", "[\"ft:pkce\"]", "public" });
 
             migrationBuilder.InsertData(
                 schema: "auth",
                 table: "OIDScopes",
                 columns: new[] { "Id", "ConcurrencyToken", "Description", "Descriptions", "DisplayName", "DisplayNames", "Name", "Properties", "Resources" },
-                values: new object[] { "3e8141f1-2254-4013-af4a-96e10241240c", "9e947485-eb8d-4177-bca5-d5876f1752c3", null, null, "dataEventRecords API access", "{\"fr-FR\":\"Accès à l'API de démo\"}", "dataEventRecords", null, "[\"rs_dataEventRecordsApi\"]" });
+                values: new object[] { "07d4b074-809b-41c0-bbfb-c68a343c21df", "31f14320-eaed-468f-b6ca-62a5d9e1d42d", null, null, "dataEventRecords API access", "{\"fr-FR\":\"Accès à l'API de démo\"}", "dataEventRecords", null, "[\"rs_dataEventRecordsApi\"]" });
 
             migrationBuilder.InsertData(
                 schema: "auth",
@@ -322,8 +278,8 @@ namespace Inta.ERP.Authorization.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "CreatedDate", "CreatedUser", "LastModifiedDate", "LastModifiedUser", "Name", "NormalizedName", "Status" },
                 values: new object[,]
                 {
-                    { "cac43a6e-f7bb-4448-baaf-1add431ccbbf", "21ad5c79-1d06-4217-8898-d94c133ea9b9", new DateTime(2023, 6, 17, 15, 25, 14, 884, DateTimeKind.Local).AddTicks(8530), 1, new DateTime(2023, 6, 17, 15, 25, 14, 884, DateTimeKind.Local).AddTicks(8541), 1, "Employee", "EMPLOYEE", 0 },
-                    { "cbc43a8e-f7bb-4445-baaf-1add431ffbbf", "082b264d-96be-42fd-8200-d93d2589c728", new DateTime(2023, 6, 17, 15, 25, 14, 884, DateTimeKind.Local).AddTicks(8545), 1, new DateTime(2023, 6, 17, 15, 25, 14, 884, DateTimeKind.Local).AddTicks(8545), 1, "Administrator", "ADMINISTRATOR", 0 }
+                    { "cac43a6e-f7bb-4448-baaf-1add431ccbbf", "cdb34fcd-c5a3-462a-80e0-058007720157", new DateTime(2023, 6, 17, 19, 6, 21, 30, DateTimeKind.Local).AddTicks(6472), 1, new DateTime(2023, 6, 17, 19, 6, 21, 30, DateTimeKind.Local).AddTicks(6486), 1, "Employee", "EMPLOYEE", 0 },
+                    { "cbc43a8e-f7bb-4445-baaf-1add431ffbbf", "21535796-09ff-4e6a-9761-722f094cf814", new DateTime(2023, 6, 17, 19, 6, 21, 30, DateTimeKind.Local).AddTicks(6490), 1, new DateTime(2023, 6, 17, 19, 6, 21, 30, DateTimeKind.Local).AddTicks(6490), 1, "Administrator", "ADMINISTRATOR", 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -332,8 +288,8 @@ namespace Inta.ERP.Authorization.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Active", "BranchId", "ConcurrencyStamp", "CreatedDate", "CreatedUser", "Email", "EmailConfirmed", "IsApiUser", "IsForcedLogoutPending", "IsLoggedIn", "LastModifiedDate", "LastModifiedUser", "LockoutEnabled", "LockoutEnd", "MaximumApproveAmount", "MaximumPettyCashApproveAmount", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Status", "TwoFactorEnabled", "UserId", "UserName" },
                 values: new object[,]
                 {
-                    { "8e445865-a24d-4543-a6c6-9443d048cdb9", 0, true, 0, "27d3ef5b-5bcf-4656-b922-7e937509ea64", new DateTime(2023, 6, 17, 15, 25, 14, 890, DateTimeKind.Local).AddTicks(8525), 1, "admin@localhost.com", true, true, false, false, new DateTime(2023, 6, 17, 15, 25, 14, 890, DateTimeKind.Local).AddTicks(8529), 1, false, null, 0m, 0m, "ADMIN@LOCALHOST.COM", "ADMIN@LOCALHOST.COM", "AQAAAAEAACcQAAAAEKJIcD1XKyvtD5jT9kGKf+bvUD6wMjN1gAarzAyJNrdarPVSTMeFFoZUXVdWqMDq6w==", null, false, "f816cab0-7fff-4889-a358-1a54bf0f4eb7", 1, false, 1, "admin@localhost.com" },
-                    { "9e224968-33e4-4652-b7b7-8574d048cdb9", 0, true, 0, "0b8b9279-ce7e-456e-b0ee-b00c464e9d33", new DateTime(2023, 6, 17, 15, 25, 14, 896, DateTimeKind.Local).AddTicks(8702), 1, "user@localhost.com", true, true, false, false, new DateTime(2023, 6, 17, 15, 25, 14, 896, DateTimeKind.Local).AddTicks(8709), 1, false, null, 0m, 0m, "USER@LOCALHOST.COM", "USER@LOCALHOST.COM", "AQAAAAEAACcQAAAAEMaPapSBVMyH6qXHqGTRyOgiz+11O77tRb97FOj69q6fhxJ6fWqT42lKjL8l0htfoA==", null, false, "afb6cb43-c1c1-49a4-9c5e-9ddd929ad76c", 1, false, 2, "user@localhost.com" }
+                    { "8e445865-a24d-4543-a6c6-9443d048cdb9", 0, true, 0, "917f1b68-b6e4-47c1-83ab-4e3dd39bb636", new DateTime(2023, 6, 17, 19, 6, 21, 36, DateTimeKind.Local).AddTicks(6849), 1, "admin@localhost.com", true, true, false, false, new DateTime(2023, 6, 17, 19, 6, 21, 36, DateTimeKind.Local).AddTicks(6856), 1, false, null, 0m, 0m, "ADMIN@LOCALHOST.COM", "ADMIN@LOCALHOST.COM", "AQAAAAEAACcQAAAAEA7bWjyiSOOQGPEOOCWE4QJFYExMK6Wx6M5qEUoPnEGMueclA1h9R3avK34v9iM81w==", null, false, "13c02f7e-fc5f-4dad-ad07-559967ec3062", 1, false, 1, "admin@localhost.com" },
+                    { "9e224968-33e4-4652-b7b7-8574d048cdb9", 0, true, 0, "247745e6-e9f4-4f22-8444-4f6963519d90", new DateTime(2023, 6, 17, 19, 6, 21, 42, DateTimeKind.Local).AddTicks(6482), 1, "user@localhost.com", true, true, false, false, new DateTime(2023, 6, 17, 19, 6, 21, 42, DateTimeKind.Local).AddTicks(6484), 1, false, null, 0m, 0m, "USER@LOCALHOST.COM", "USER@LOCALHOST.COM", "AQAAAAEAACcQAAAAEE81QjvJ53X4t4d7kVVx2wMEB/66HhRWNuMwmWmSuBozm77e3Y83KaobT/ricbVa5g==", null, false, "e2059be5-cac0-4661-88b6-0d3841d22ef5", 1, false, 2, "user@localhost.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -409,12 +365,6 @@ namespace Inta.ERP.Authorization.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserLogins_UserId",
-                schema: "auth",
-                table: "UserLogins",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_UserRoles_RoleId",
                 schema: "auth",
                 table: "UserRoles",
@@ -455,15 +405,7 @@ namespace Inta.ERP.Authorization.Migrations
                 schema: "auth");
 
             migrationBuilder.DropTable(
-                name: "UserLogins",
-                schema: "auth");
-
-            migrationBuilder.DropTable(
                 name: "UserRoles",
-                schema: "auth");
-
-            migrationBuilder.DropTable(
-                name: "UserTokens",
                 schema: "auth");
 
             migrationBuilder.DropTable(

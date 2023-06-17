@@ -83,7 +83,9 @@ namespace Inta.ERP.Authorization.DbContext
             {
                 entity.ToTable(name: "OIDTokens"); // rename the default table OpenIddictTokens
             });
-            
+
+            builder.Ignore<IdentityUserLogin<string>>();
+            builder.Ignore<IdentityUserToken<string>>();
         }
     }
 }
