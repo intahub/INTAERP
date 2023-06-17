@@ -8,7 +8,7 @@ using OpenIddict.Validation.AspNetCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+//Test
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<ErpDbContext>(options =>
