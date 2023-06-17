@@ -8,6 +8,7 @@ namespace Inta.ERP.Authorization.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public override string Id { get; set; }
+        public int UserId { get; set; }
         public int BranchId { get; set; }
         public bool Active { get; set; }
         public bool IsApiUser { get; set; }

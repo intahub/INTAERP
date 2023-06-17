@@ -34,6 +34,7 @@ namespace Inta.ERP.Authorization.DbContext
             {
                 entity.ToTable(name: "Users");
                 //entity.HasKey(x => x.Id).HasName("UserId");
+                entity.Property(e => e.UserId).ValueGeneratedOnAdd();
                 entity.Property(e => e.MaximumApproveAmount).HasPrecision(18, 2);
                 entity.Property(e => e.MaximumPettyCashApproveAmount).HasPrecision(18, 2);
             });
