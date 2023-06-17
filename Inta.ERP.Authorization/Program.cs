@@ -38,6 +38,8 @@ builder.Services.AddIdentity<User, Role>()
     .AddDefaultTokenProviders()
     .AddDefaultUI();
 
+//builder.Services.AddDistributedMemoryCache();
+
 builder.Services.AddSession(options =>
 {
     //Sets the amount of time that a session can be idle before it expires
@@ -107,12 +109,13 @@ builder.Services.AddOpenIddict()
             {
                 // Enable the authorization, logout, token and userinfo endpoints.
                 options.SetAuthorizationEndpointUris("connect/authorize") // Sets the URI for the authorization endpoint. This endpoint handles user authentication and authorization requests.                                                                              
+               .SetIntrospectionEndpointUris("connect/introspect")
                .SetLogoutEndpointUris("connect/logout") //  Sets the URI for the logout endpoint. This endpoint handles user logout requests.
                .SetTokenEndpointUris("connect/token") // Sets the URI for the token endpoint. This endpoint is used by clients to exchange authorization codes or refresh tokens for access tokens.
-               .SetUserinfoEndpointUris("connect/userinfo"); // Sets the URI for the userinfo endpoint. This endpoint provides information about the authenticated user.
-                                                             //.SetVerificationEndpointUris("connect/verify");// Sets the URI for the verification endpoint. This endpoint can be used by clients to verify the authenticity of tokens.
+               .SetUserinfoEndpointUris("connect/userinfo") // Sets the URI for the userinfo endpoint. This endpoint provides information about the authenticated user.
+               .SetVerificationEndpointUris("connect/verify");// Sets the URI for the verification endpoint. This endpoint can be used by clients to verify the authenticity of tokens.
 
-                
+
                 options.AllowAuthorizationCodeFlow()//The authorization code flow is used by confidential clients (e.g., web applications) to obtain an authorization code from the authorization endpoint and exchange it for an access token
                 .AllowRefreshTokenFlow();//The refresh token flow allows clients to obtain a new access token by presenting a valid refresh token to the token endpoint.
 
@@ -140,6 +143,7 @@ builder.Services.AddOpenIddict()
 
 
 var app = builder.Build();
+app.UseCors("AllowAllOrigins");
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

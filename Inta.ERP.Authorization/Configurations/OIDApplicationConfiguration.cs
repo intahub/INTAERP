@@ -20,7 +20,7 @@ namespace Inta.ERP.Authorization.Configurations
                     DisplayNames = "{\"fr-FR\":\"Inta ERP Angular Client PKCE\"}",
                     PostLogoutRedirectUris = "[\"https://localhost:4200\"]",
                     RedirectUris = "[\"https://localhost:4200\"]",
-                    Permissions="[\"ept:authorization\", \"ept:logout\", \"ept:token\", \"ept:revocation\", \"gt:authorization_code\", \"gt:refresh_token\", \"rst:code\", \"scp:email\", \"scp:profile\", \"scp:roles\", \"scp:dataEventRecords\"]",
+                    Permissions="[\"ept:authorization\",\"ept:logout\",\"ept:token\",\"ept:revocation\",\"gt:authorization_code\",\"gt:refresh_token\",\"rst:code\",\"scp:email\",\"scp:profile\",\"scp:roles\",\"scp:dataEventRecords\"]",
                     Requirements= "[\"ft:pkce\"]",
                     Type= "public"
 
